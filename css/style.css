@@ -1995,6 +1995,16 @@ form textarea
   width: 50%;
   margin-top: 10px;
 }
+td img
+{
+  width: 23px;
+  padding-right: 5px;
+  height: 15px;
+  object-fit: scale-down;
+}
+.serviceitem-left td{
+  padding-right: 10px;
+}
 .save i{
   color: #00B9FF;
 }
