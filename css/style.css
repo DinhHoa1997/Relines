@@ -1995,13 +1995,16 @@ form textarea
   width: 50%;
   margin-top: 10px;
 }
-td img
+.service-info td img
 {
   width: 23px;
   padding-right: 5px;
-  height: 15px;
+  
   object-fit: scale-down;
 }
+/* .service-info tr td:nth-child(1) {
+    max-width: 17px;
+} */
 .serviceitem-left td{
   padding-right: 10px;
 }
