@@ -193,10 +193,48 @@
       <!-- end slideshow -->
       <div class="homesearch-wrapper">
         <div class="grid">
+       
           <div class="search-form">
+            <form action="#" method="GET" class="mangluoi-form">
+              <div class="flex-container">
+               
+                <div class="cell-1-6 tab-cell-1-1">
+                  <select id="selectbox1">
+                    <option value="">Select an option&hellip;</option>
+                    <option value="aye">Aye</option>
+                    <option value="eh">Eh</option>
+                    <option value="ooh">Ooh</option>
+                    <option value="whoop">Whoop</option>
+                </select>
+                </div>
+                <div class="cell-1-6 tab-cell-1-1">
+                  <div class="search-item">
+                  <select id="selectbox2">
+                    <option value="">Month&hellip;</option>
+                    <option value="january">January</option>
+                    <option value="february">February</option>
+                    <option value="march">March</option>
+                    <option value="april">April</option>
+                    <option value="may">May</option>
+                    <option value="june">June</option>
+                    <option value="july">July</option>
+                    <option value="august">August</option>
+                    <option value="september">September</option>
+                    <option value="october">October</option>
+                    <option value="november">November</option>
+                    <option value="december">December</option>
+                </select>
+                <div class="search-icon">
+                  <img src="/uploaded/ico/country.png" alt="">
+                </div>
+                </div>  
+                </div>
+                </form>
+              </div>
+
+               
               
-                <form action="#" method="GET" class="mangluoi-form">
-                  <div class="flex-container align-center">
+                  <!-- <div class="flex-container align-center">
                       <div class="cell-1-6 tab-cell-1-1">
                         <div class="search-item">
   
@@ -267,10 +305,75 @@
                 
                 
                   
-                </div>
+                </div> -->
       
               </form>	
-              
+              <script>
+                // Iterate over each select element
+    $('select').each(function () {
+
+    // Cache the number of options
+    var $this = $(this),
+        numberOfOptions = $(this).children('option').length;
+
+    // Hides the select element
+    $this.addClass('s-hidden');
+
+    // Wrap the select element in a div
+    $this.wrap('<div class="select"></div>');
+
+    // Insert a styled div to sit over the top of the hidden select element
+    $this.after('<div class="styledSelect"></div>');
+
+    // Cache the styled div
+    var $styledSelect = $this.next('div.styledSelect');
+
+    // Show the first select option in the styled div
+    $styledSelect.text($this.children('option').eq(0).text());
+
+    // Insert an unordered list after the styled div and also cache the list
+    var $list = $('<ul />', {
+        'class': 'options'
+    }).insertAfter($styledSelect);
+
+    // Insert a list item into the unordered list for each select option
+    for (var i = 0; i < numberOfOptions; i++) {
+        $('<li />', {
+            text: $this.children('option').eq(i).text(),
+            rel: $this.children('option').eq(i).val()
+        }).appendTo($list);
+    }
+
+    // Cache the list items
+    var $listItems = $list.children('li');
+
+    // Show the unordered list when the styled div is clicked (also hides it if the div is clicked again)
+    $styledSelect.click(function (e) {
+        e.stopPropagation();
+        $('div.styledSelect.active').each(function () {
+            $(this).removeClass('active').next('ul.options').hide();
+        });
+        $(this).toggleClass('active').next('ul.options').toggle();
+    });
+
+    // Hides the unordered list when a list item is clicked and updates the styled div to show the selected list item
+    // Updates the select element to have the value of the equivalent option
+    $listItems.click(function (e) {
+        e.stopPropagation();
+        $styledSelect.text($(this).text()).removeClass('active');
+        $this.val($(this).attr('rel'));
+        $list.hide();
+        /* alert($this.val()); Uncomment this for demonstration! */
+    });
+
+    // Hides the unordered list when clicking outside of it
+    $(document).click(function () {
+        $styledSelect.removeClass('active');
+        $list.hide();
+    });
+
+    });
+</script>
           </div>
         </div>
       </div>
@@ -327,13 +430,155 @@
                               <hr>
                               <div class="c10"></div>
                               <div class="product-content">
+                                  <!-- <div class="productitem-left">
+                                      <div class="productitem-line"> <span><i class="fas fa-dollar-sign"></i> Lương tổng(Gross) </span><span class="service-price"> 150.000 Yên </span> <span class="service-price">  &#8776; 30.000.000 VND</span></div>
+                                      <div class="productitem-line"> <span> <i class="fas fa-hand-holding-usd"></i> Lương về tay(Net) </span><span class="service-price"> 150.000 Yên </span>  <span class="service-price">  &#8776; 30.000.000 VND</span></div>
+                                      <div class="productitem-line"> <span><i class="far fa-clock"></i> Số giờ tăng ca</span> <span class="service-price"> Tháng 1,4,6,8</span> </div>
+                                      <div class="productitem-line"> <span><i class="fad fa-medal"></i>Thưởng </span> <span class="service-price"> 20.000 Yên</span> </div>
+  
+                                  </div> -->
                                   <div class="productitem-left">
+                                    <table>
+                                      <tbody>
+                                        <tr>
+                                          <td><img alt="" src="/uploaded/ico/dolar.png" /> Lương tổng(Gross)</td>
+                                          <td><strong>150.000 Yên </strong></td>
+                                          <td><strong> 30.000.000 VND </strong></td>
+                                        </tr>
+                                        <tr>
+                                          <td><img alt="" src="/uploaded/ico/net.png" /> Lương về tay(Net)</td>
+                                          <td><strong>150.000 Yên</strong></td>
+                                          <td><strong>30.000.000 VND</strong></td>
+                                        </tr>
+                                        <tr>
+                                          <td><img alt="" src="/uploaded/ico/overtime.png" />Số giờ tăng ca</td>
+                                          <td><strong>20 giờ</strong></td>
+                                          <td></td>
+                                        </tr>
+                                        <tr>
+                                          <td> <img src="/uploaded/ico/bonus.png" alt="">Thưởng</td>
+                                          <td><strong>20.000 Yên</strong></td>
+                                          <td></td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </div>
+                                  
+                                  <div class="product-right">
+                                      <div class="time">
+                                          Còn 20 ngày để ứng tuyển
+                                          <div class="c10"></div>
+                                      </div>
+                                      <div class="upload">
+                                          <a href="#"> <i class="fas fa-briefcase"></i> Ứng tuyển ngay</a>
+                                      </div>
+                                      <div class="save">
+                                        <a href="#"><i class="far fa-heart"></i></a>
+                                      </div>
+                                  </div>
+                              </div>
+  
+                              
+                              <div class="c10"></div>
+                          
+                      </div>
+                      </div>
+                    </div>
+                    <div class="product-item">
+                      <div class="flex-container">
+                          <div class="cell-1-4 tab-cell-1-3">
+                              <a href="#" class="img-shine">
+                                  <img src="/uploaded/dichvu/Duhoc-1-re_07.png" alt="">
+                              </a>
+                              
+                          </div>
+                          <div class="cell-3-4 tab-cell-1-1">
+                              <div class="serviceitem-content"> 
+                                <div class="serviceitem-left">
+                                  <h3 class="">
+                                      <a href="#">Điều dưỡng - Chiba Shi</a>
+                                  </h3>
+                                  <div class="c10"></div>
+                                  <p><i class="far fa-user"></i> Y tế</p>
+                                  <p><i class="fas fa-map-marker-alt"></i>  Tokyo, Nhật bản</p>
+                                  <div class="c10"></div>   
+                                </div>  
+                                <div class="sericeitem-right" style="margin-top:-20px">
+                                 
+                                  <div class="hot"> 
+                                      <img src="/uploaded/ico/hot.png" alt="">
+                                  </div>
+                              </div>                          
+                              </div>
+                              <div class="c10"></div>
+                              <hr>
+                              <div class="c10"></div>
+                              <div class="product-content">
+                                  <!-- <div class="productitem-left">
                                       <div class="productitem-line"> <span><i class="fas fa-dollar-sign"></i> Lương tổng(Gross) </span><span class="service-price"> 150.000 Yên </span> <span class="service-price">  &#8776; 30.000.000 VND</span></div>
                                       <div class="productitem-line"> <span> <i class="fas fa-hand-holding-usd"></i> Lương về tay(Net) </span><span class="service-price"> 150.000 Yên </span>  <span class="service-price">  &#8776; 30.000.000 VND</span></div>
                                       <div class="productitem-line"> <span><i class="far fa-clock"></i> Số giờ tăng ca</span> <span class="service-price"> Tháng 1,4,6,8</span> </div>
                                       <div class="productitem-line"> <span><i class="fad fa-medal"></i>Thưởng </span> <span class="service-price"> 20.000 Yên</span> </div>
   
                                   </div>
+                                   -->
+                                  <div class="product-right">
+                                      <div class="time">
+                                          Còn 20 ngày để ứng tuyển
+                                          <div class="c10"></div>
+                                      </div>
+                                      <div class="upload">
+                                          <a href="#"> <i class="fas fa-briefcase"></i> Ứng tuyển ngay</a>
+                                      </div>
+                                      <div class="save">
+                                        <a href="#"><i class="far fa-heart"></i></a>
+                                      </div>
+                                  </div>
+                              </div>
+  
+                              
+                              <div class="c10"></div>
+                          
+                      </div>
+                      </div>
+                    </div>
+                    <div class="product-item">
+                      <div class="flex-container">
+                          <div class="cell-1-4 tab-cell-1-3">
+                              <a href="#" class="img-shine">
+                                  <img src="/uploaded/dichvu/Duhoc-1-re_07.png" alt="">
+                              </a>
+                              
+                          </div>
+                          <div class="cell-3-4 tab-cell-1-1">
+                              <div class="serviceitem-content"> 
+                                <div class="serviceitem-left">
+                                  <h3 class="">
+                                      <a href="#">Điều dưỡng - Chiba Shi</a>
+                                  </h3>
+                                  <div class="c10"></div>
+                                  <p><i class="far fa-user"></i> Y tế</p>
+                                  <p><i class="fas fa-map-marker-alt"></i>  Tokyo, Nhật bản</p>
+                                  <div class="c10"></div>   
+                                </div>  
+                                <div class="sericeitem-right" style="margin-top:-20px">
+                                 
+                                  <div class="hot"> 
+                                      <img src="/uploaded/ico/hot.png" alt="">
+                                  </div>
+                              </div>                          
+                              </div>
+                              <div class="c10"></div>
+                              <hr>
+                              <div class="c10"></div>
+                              <div class="product-content">
+                                  <!-- <div class="productitem-left">
+                                      <div class="productitem-line"> <span><i class="fas fa-dollar-sign"></i> Lương tổng(Gross) </span><span class="service-price"> 150.000 Yên </span> <span class="service-price">  &#8776; 30.000.000 VND</span></div>
+                                      <div class="productitem-line"> <span> <i class="fas fa-hand-holding-usd"></i> Lương về tay(Net) </span><span class="service-price"> 150.000 Yên </span>  <span class="service-price">  &#8776; 30.000.000 VND</span></div>
+                                      <div class="productitem-line"> <span><i class="far fa-clock"></i> Số giờ tăng ca</span> <span class="service-price"> Tháng 1,4,6,8</span> </div>
+                                      <div class="productitem-line"> <span><i class="fad fa-medal"></i>Thưởng </span> <span class="service-price"> 20.000 Yên</span> </div>
+  
+                                  </div> -->
                                   
                                   <div class="product-right">
                                       <div class="time">
@@ -443,129 +688,13 @@
                               <hr>
                               <div class="c10"></div>
                               <div class="product-content">
-                                  <div class="productitem-left">
+                                  <!-- <div class="productitem-left">
                                       <div class="productitem-line"> <span><i class="fas fa-dollar-sign"></i> Lương tổng(Gross) </span><span class="service-price"> 150.000 Yên </span> <span class="service-price">  &#8776; 30.000.000 VND</span></div>
                                       <div class="productitem-line"> <span> <i class="fas fa-hand-holding-usd"></i> Lương về tay(Net) </span><span class="service-price"> 150.000 Yên </span>  <span class="service-price">  &#8776; 30.000.000 VND</span></div>
                                       <div class="productitem-line"> <span><i class="far fa-clock"></i> Số giờ tăng ca</span> <span class="service-price"> Tháng 1,4,6,8</span> </div>
                                       <div class="productitem-line"> <span><i class="fad fa-medal"></i>Thưởng </span> <span class="service-price"> 20.000 Yên</span> </div>
   
-                                  </div>
-                                  
-                                  <div class="product-right">
-                                      <div class="time">
-                                          Còn 20 ngày để ứng tuyển
-                                          <div class="c10"></div>
-                                      </div>
-                                      <div class="upload">
-                                          <a href="#"> <i class="fas fa-briefcase"></i> Ứng tuyển ngay</a>
-                                      </div>
-                                      <div class="save">
-                                        <a href="#"><i class="far fa-heart"></i></a>
-                                      </div>
-                                  </div>
-                              </div>
-  
-                              
-                              <div class="c10"></div>
-                          
-                      </div>
-                      </div>
-                    </div>
-                    <div class="product-item">
-                      <div class="flex-container">
-                          <div class="cell-1-4 tab-cell-1-3">
-                              <a href="#" class="img-shine">
-                                  <img src="/uploaded/dichvu/Duhoc-1-re_07.png" alt="">
-                              </a>
-                              
-                          </div>
-                          <div class="cell-3-4 tab-cell-1-1">
-                              <div class="serviceitem-content"> 
-                                <div class="serviceitem-left">
-                                  <h3 class="">
-                                      <a href="#">Điều dưỡng - Chiba Shi</a>
-                                  </h3>
-                                  <div class="c10"></div>
-                                  <p><i class="far fa-user"></i> Y tế</p>
-                                  <p><i class="fas fa-map-marker-alt"></i>  Tokyo, Nhật bản</p>
-                                  <div class="c10"></div>   
-                                </div>  
-                                <div class="sericeitem-right" style="margin-top:-20px">
-                                 
-                                  <div class="hot"> 
-                                      <img src="/uploaded/ico/hot.png" alt="">
-                                  </div>
-                              </div>                          
-                              </div>
-                              <div class="c10"></div>
-                              <hr>
-                              <div class="c10"></div>
-                              <div class="product-content">
-                                  <div class="productitem-left">
-                                      <div class="productitem-line"> <span><i class="fas fa-dollar-sign"></i> Lương tổng(Gross) </span><span class="service-price"> 150.000 Yên </span> <span class="service-price">  &#8776; 30.000.000 VND</span></div>
-                                      <div class="productitem-line"> <span> <i class="fas fa-hand-holding-usd"></i> Lương về tay(Net) </span><span class="service-price"> 150.000 Yên </span>  <span class="service-price">  &#8776; 30.000.000 VND</span></div>
-                                      <div class="productitem-line"> <span><i class="far fa-clock"></i> Số giờ tăng ca</span> <span class="service-price"> Tháng 1,4,6,8</span> </div>
-                                      <div class="productitem-line"> <span><i class="fad fa-medal"></i>Thưởng </span> <span class="service-price"> 20.000 Yên</span> </div>
-  
-                                  </div>
-                                  
-                                  <div class="product-right">
-                                      <div class="time">
-                                          Còn 20 ngày để ứng tuyển
-                                          <div class="c10"></div>
-                                      </div>
-                                      <div class="upload">
-                                          <a href="#"> <i class="fas fa-briefcase"></i> Ứng tuyển ngay</a>
-                                      </div>
-                                      <div class="save">
-                                        <a href="#"><i class="far fa-heart"></i></a>
-                                      </div>
-                                  </div>
-                              </div>
-  
-                              
-                              <div class="c10"></div>
-                          
-                      </div>
-                      </div>
-                    </div>
-                    <div class="product-item">
-                      <div class="flex-container">
-                          <div class="cell-1-4 tab-cell-1-3">
-                              <a href="#" class="img-shine">
-                                  <img src="/uploaded/dichvu/Duhoc-1-re_07.png" alt="">
-                              </a>
-                              
-                          </div>
-                          <div class="cell-3-4 tab-cell-1-1">
-                              <div class="serviceitem-content"> 
-                                <div class="serviceitem-left">
-                                  <h3 class="">
-                                      <a href="#">Điều dưỡng - Chiba Shi</a>
-                                  </h3>
-                                  <div class="c10"></div>
-                                  <p><i class="far fa-user"></i> Y tế</p>
-                                  <p><i class="fas fa-map-marker-alt"></i>  Tokyo, Nhật bản</p>
-                                  <div class="c10"></div>   
-                                </div>  
-                                <div class="sericeitem-right" style="margin-top:-20px">
-                                 
-                                  <div class="hot"> 
-                                      <img src="/uploaded/ico/hot.png" alt="">
-                                  </div>
-                              </div>                          
-                              </div>
-                              <div class="c10"></div>
-                              <hr>
-                              <div class="c10"></div>
-                              <div class="product-content">
-                                  <div class="productitem-left">
-                                      <div class="productitem-line"> <span><i class="fas fa-dollar-sign"></i> Lương tổng(Gross) </span><span class="service-price"> 150.000 Yên </span> <span class="service-price">  &#8776; 30.000.000 VND</span></div>
-                                      <div class="productitem-line"> <span> <i class="fas fa-hand-holding-usd"></i> Lương về tay(Net) </span><span class="service-price"> 150.000 Yên </span>  <span class="service-price">  &#8776; 30.000.000 VND</span></div>
-                                      <div class="productitem-line"> <span><i class="far fa-clock"></i> Số giờ tăng ca</span> <span class="service-price"> Tháng 1,4,6,8</span> </div>
-                                      <div class="productitem-line"> <span><i class="fad fa-medal"></i>Thưởng </span> <span class="service-price"> 20.000 Yên</span> </div>
-  
-                                  </div>
+                                  </div> -->
                                   
                                   <div class="product-right">
                                       <div class="time">

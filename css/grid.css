@@ -23,7 +23,7 @@ body {
 
 .grid {
     width: 100%;
-    max-width: 1200px;
+    max-width: 1240px;
     margin: 0 auto;
 }
 
@@ -125,11 +125,11 @@ body {
 }
 
 .cell-1-6 {
-    width: 16%;
+    width: 16.5%;
 }
 
 .cell-2-6 {
-    width: 35%;
+    width: 33%;
 }
 
 .cell-4-6 {
@@ -172,7 +172,18 @@ body {
     float: left;
     width: 74%;
 }
-
+.cell-search{
+	max-width:185px;
+}
+.cell-search-2-5
+{width:38%}
+.cell-search-1-5
+{
+	width:14%;
+}
+.cell-search-1-5{
+	width:22%;
+}
 .cell-1-2 {
     width: 49%;
 }
@@ -383,7 +394,22 @@ body {
 .cell-homenews:nth-child(1), .cell-homenews:nth-child(2){
     width: 48.5%;
 }
-
+@media handheld,
+only screen and (max-width: 1420px) {
+   .cell-user-right{
+    max-width: 1000px;
+   }
+   .cell-lable {
+    width: 140px!important;
+}
+}
+@media handheld,
+only screen and (min-width: 1421px) {
+   .cell-user-right{
+    max-width: auto;
+   }
+ 
+}
 
 @media handheld,
 only screen and (max-width: 1200px) {
@@ -610,4 +636,31 @@ only screen and (max-width: 579px) {
     }
 
 
+}
+@media handheld,
+only screen and (min-width: 1200px)
+{
+.grid {
+    width: 100%;
+    max-width: 1140px;
+    margin: 0 auto;
+}
+}
+@media handheld,
+only screen and (min-width: 1400px)
+{
+.grid {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+}
+@media handheld,
+only screen and (min-width: 1600px)
+{
+.grid {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
 }
