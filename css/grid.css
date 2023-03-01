@@ -23,7 +23,7 @@ body {
 
 .grid {
     width: 100%;
-    max-width: 1240px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
@@ -283,7 +283,10 @@ body {
 .cell-home-1-5 {
     width: 15%;
 }
-
+.cell-1-5--user
+{
+	width:22%
+}
 .cell-1-10 {
     width: 10%;
 }
@@ -394,22 +397,7 @@ body {
 .cell-homenews:nth-child(1), .cell-homenews:nth-child(2){
     width: 48.5%;
 }
-@media handheld,
-only screen and (max-width: 1420px) {
-   .cell-user-right{
-    max-width: 1000px;
-   }
-   .cell-lable {
-    width: 140px!important;
-}
-}
-@media handheld,
-only screen and (min-width: 1421px) {
-   .cell-user-right{
-    max-width: auto;
-   }
- 
-}
+
 
 @media handheld,
 only screen and (max-width: 1200px) {
@@ -651,7 +639,7 @@ only screen and (min-width: 1400px)
 {
 .grid {
     width: 100%;
-    max-width: 1200px;
+    max-width: 1300px;
     margin: 0 auto;
 }
 }
